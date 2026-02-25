@@ -94,8 +94,8 @@ fun EditValue(amountValue : String,
     TextField(value = amountValue, onValueChange = onValueChanged, singleLine = true)
 }
 
-fun CalculateTipValue(amount: Double) : String{
-    val tip = 15.0 / 100 * amount
+fun CalculateTipValue(amount: Double,tipPercentage : Double = 15.0) : String{
+    val tip = tipPercentage / 100 * amount
     return NumberFormat.getCurrencyInstance().format(tip)
 }
 

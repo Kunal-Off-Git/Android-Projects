@@ -25,7 +25,8 @@ class MainActivity : ComponentActivity() {
                 ) {
 //                    Greeting("Android")
 //                    Counter(name = "Kunal")
-                    CalculateTip()
+//                    CalculateTip()
+                    CalculateTipWithViewModel()
                 }
             }
         }
