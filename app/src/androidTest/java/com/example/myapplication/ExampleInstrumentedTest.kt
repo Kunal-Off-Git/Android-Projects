@@ -3,8 +3,11 @@ package com.example.myapplication
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
+import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
+import androidx.compose.ui.test.performTextClearance
+import androidx.compose.ui.test.performTextInput
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.gd_app.BusinessCard
@@ -71,16 +74,26 @@ class CounterScreenTest{
     }
 }
 
-//@RunWith(AndroidJUnit4::class)
-//class CalculateTipTest{
-//    @get:Rule
-//    val composableTestRule = createComposeRule()
-//
-//    @Test
-//    fun
-//
-//}
-//
+@RunWith(AndroidJUnit4::class)
+class CalculateTipTest{
+    @get:Rule
+    val composableTestRule = createComposeRule()
+
+    @Test
+    fun TipAmountTest(){
+        composableTestRule.setContent {
+            CalculateTip()
+        }
+
+        composableTestRule.onNodeWithTag("amountValue").performTextClearance()
+        composableTestRule.onNodeWithTag("amountValue").performTextInput("100.00")
+
+        val txt : String = CalculateTipValue(100.00)
+        composableTestRule.onNodeWithText(txt).assertIsDisplayed()
+    }
+
+}
+
 @RunWith(AndroidJUnit4::class)
 class BusinessCardScreenTest{
     @get:Rule

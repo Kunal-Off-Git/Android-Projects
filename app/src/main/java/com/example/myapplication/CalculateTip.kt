@@ -24,6 +24,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.myapplication.ui.theme.MyApplicationTheme
@@ -64,6 +65,7 @@ fun CalculateTip(modifier : androidx.compose.ui.Modifier = Modifier){
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(bottom = 20.dp)
+                    .testTag("amountValue")
             )
 
             Column (Modifier.padding(bottom = 20.dp)){
