@@ -14,4 +14,10 @@ class ExampleUnitTest {
     fun addition_isCorrect() {
         assertEquals(4, 2 + 2)
     }
+
+    @Test
+    fun CalculateTipTest(){
+        val amount = 100.0;
+        assertEquals("₹15.00", CalculateTipValue(amount))
+    }
 }
