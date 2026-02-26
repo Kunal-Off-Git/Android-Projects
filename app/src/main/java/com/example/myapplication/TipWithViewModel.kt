@@ -55,7 +55,7 @@ class TipViewModel : ViewModel(){
 }
 
 @Composable
-fun CalculateTipWithViewModel(viewModel : TipViewModel = viewModel(),modifier : androidx.compose.ui.Modifier = Modifier){
+fun CalculateTipWithViewModel(viewModel : TipViewModel = viewModel(),modifier : Modifier = Modifier){
 
     Column(modifier = Modifier
         .fillMaxSize()
