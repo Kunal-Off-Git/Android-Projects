@@ -21,12 +21,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
+import androidx.navigation.NavController
 import com.example.myapplication.R
 import com.example.myapplication.ui.theme.MyApplicationTheme
 import com.example.myapplication.ui.theme.MyApplicationTheme
 
 @Composable
-fun DiceRoller(modifier: Modifier = Modifier){
+fun DiceRoller(navController: NavController,modifier: Modifier = Modifier){
     var result by remember { mutableStateOf(1) }
     val imageResource = when(result){
         1 -> R.drawable.dice_1
@@ -48,17 +49,21 @@ fun DiceRoller(modifier: Modifier = Modifier){
             Text(text = "Roll")
         }
 //        Text(text = result.toString())
-    }
-}
 
-
-
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-fun DiceRollerPreview(){
-    MyApplicationTheme{
-        Surface(modifier = Modifier.fillMaxSize()) {
-            DiceRoller( modifier = Modifier.fillMaxSize())
+        Button(onClick = { navController.popBackStack() }) {
+            Text(text = "Go Back")
         }
     }
 }
+
+
+
+//@Preview(showBackground = true, showSystemUi = true)
+//@Composable
+//fun DiceRollerPreview(){
+//    MyApplicationTheme{
+//        Surface(modifier = Modifier.fillMaxSize()) {
+//            DiceRoller(navController ,modifier = Modifier.fillMaxSize())
+//        }
+//    }
+//}

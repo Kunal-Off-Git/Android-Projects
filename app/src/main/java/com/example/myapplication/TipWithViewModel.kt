@@ -29,6 +29,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 import com.example.myapplication.ui.theme.MyApplicationTheme
 
 
@@ -55,7 +56,7 @@ class TipViewModel : ViewModel(){
 }
 
 @Composable
-fun CalculateTipWithViewModel(viewModel : TipViewModel = viewModel(),modifier : Modifier = Modifier){
+fun CalculateTipWithViewModel(navController:NavController,viewModel : TipViewModel = viewModel(),modifier : Modifier = Modifier){
 
     Column(modifier = Modifier
         .fillMaxSize()
@@ -150,15 +151,18 @@ fun CalculateTipWithViewModel(viewModel : TipViewModel = viewModel(),modifier : 
                 }
             }
         }
-    }
-}
-
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-fun CalculateTipWithViewModelPreview(modifier : Modifier = Modifier){
-    MyApplicationTheme{
-        Surface(modifier = Modifier.fillMaxSize()) {
-            CalculateTipWithViewModel( modifier = Modifier.fillMaxSize())
+        Button(onClick = { navController.popBackStack() }) {
+            Text(text = "Go Back")
         }
     }
 }
+
+//@Preview(showBackground = true, showSystemUi = true)
+//@Composable
+//fun CalculateTipWithViewModelPreview(modifier : Modifier = Modifier){
+//    MyApplicationTheme{
+//        Surface(modifier = Modifier.fillMaxSize()) {
+//            CalculateTipWithViewModel( modifier = Modifier.fillMaxSize())
+//        }
+//    }
+//}

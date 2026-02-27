@@ -22,9 +22,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import androidx.navigation.NavController
 
 @Composable
-fun Counter(name: String, modifier: Modifier = Modifier) {
+fun Counter(name: String,navController: NavController, modifier: Modifier = Modifier) {
     var count by remember { mutableStateOf(0) }
 
     var countColor = when{
@@ -97,5 +98,10 @@ fun Counter(name: String, modifier: Modifier = Modifier) {
                 Text(text = "Reset")
             }
         }
+
+        Button(onClick = { navController.popBackStack() }) {
+            Text(text = "Go Back")
+        }
+
     }
 }

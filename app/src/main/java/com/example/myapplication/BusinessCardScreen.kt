@@ -17,6 +17,7 @@ import androidx.compose.material.icons.Icons
 //import androidx.compose.material.icons.filled.AlternateEmail
 import androidx.compose.material.icons.filled.Call
 import androidx.compose.material.icons.filled.Email
+import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Surface
@@ -30,6 +31,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.myapplication.R
 import com.example.myapplication.ui.theme.MyApplicationTheme
 import com.example.myapplication.ui.theme.MyApplicationTheme
@@ -40,7 +42,7 @@ import com.example.myapplication.ui.theme.MyApplicationTheme
 //import androidx.compose.material3.Icon
 
 @Composable
-fun BusinessCard(name: String,title:String,phone:String,email:String,socialMedia:String,modifier: Modifier = Modifier){
+fun BusinessCard(name: String,title:String,phone:String,email:String,socialMedia:String,navController: NavController,modifier: Modifier = Modifier){
     Column (modifier = Modifier,
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally){
@@ -61,19 +63,13 @@ fun BusinessCard(name: String,title:String,phone:String,email:String,socialMedia
         ContactRow(Icons.Filled.Call,phone)
         ContactRow(Icons.Filled.Email,email)
         ContactRow(Icons.Filled.Email,"@$socialMedia")
-//        Row (modifier = Modifier.padding(bottom = 10.dp)){
-//            Icon(imageVector = Icons.Filled.Call, contentDescription = "Call Icon")
-//            Text(text = "+91 999 999 9990", fontSize = 20.sp, lineHeight = 20.sp)
-//        }
-//        Row (modifier = Modifier.padding(bottom = 10.dp)){
-//            Icon(imageVector = Icons.Filled.Email, contentDescription = "Call Icon")
-//            Text(text = "iamkunal@gmail.com", fontSize = 20.sp, lineHeight = 20.sp)
-//        }
-//        Row (modifier = Modifier.padding(bottom = 10.dp)){
-//            Icon(imageVector = Icons.Filled.AlternateEmail, contentDescription = "Call Icon")
-//            Text(text = "@kunalisadev", fontSize = 20.sp, lineHeight = 20.sp)
-//        }
+
+        Button(onClick = { navController.popBackStack() }) {
+            Text(text = "Go Back")
+        }
+
     }
+
 }
 
 @Composable
@@ -98,15 +94,17 @@ fun ContactRow(icon: ImageVector, text: String) {
             fontSize = 20.sp,
             lineHeight = 20.sp
         )
+
+
     }
 }
 
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-fun BusinessCardPreview(){
-    MyApplicationTheme{
-        Surface(modifier = Modifier.fillMaxSize()) {
-            BusinessCard("Kunal", "Developer", "+91 999 999 9999","iamKunal@gmail.com","@kunalisaDEV" ,modifier = Modifier.fillMaxSize())
-        }
-    }
-}
+//@Preview(showBackground = true, showSystemUi = true)
+//@Composable
+//fun BusinessCardPreview(){
+//    MyApplicationTheme{
+//        Surface(modifier = Modifier.fillMaxSize()) {
+//            BusinessCard("Kunal", "Developer", "+91 999 999 9999","iamKunal@gmail.com","@kunalisaDEV" ,modifier = Modifier.fillMaxSize())
+//        }
+//    }
+//}
